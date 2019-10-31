@@ -1,7 +1,7 @@
 FROM ubuntu:bionic
 
 RUN apt-get update && \
-    apt-get install -y wget software-properties-common bash apt-utils
+    apt-get install -y --no-install-recommends wget software-properties-common bash apt-utils
     
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y locales \
@@ -19,20 +19,16 @@ COPY ./.bashrc /home/finroc_user
 
 VOLUME /home/finroc_user
 
+RUN apt-get install -y --no-install-recommends  gpg-agent
 
-RUN add-apt-repository universe
+COPY ./finroc.org.list /etc/apt/sources.list.d/finroc.org.list
+
+RUN wget -qO - http://finroc.org/apt-signing-key.gpg | apt-key add -
 
 RUN apt-get update && \
-    apt-get install -y \
-    ant astyle curl dialog doxygen llvm libclang-dev llvm-dev g++  clang  graphviz make mercurial default-jdk pkg-config 
+    apt-get install -y --no-install-recommends \
+    finroc-dependencies astyle=2.03-1 && \
+    apt-mark hold astyle
     
-RUN apt-get install -y \
-    libfontchooser-java libitext5-java libsvgsalamander-java libxstream-java libxpp3-java
-    
-RUN apt-get install -y \
-    libboost-all-dev libcppunit-dev  xml2
-    
-RUN apt-get install -y \
-    libswitch-perl libterm-readkey-perl libtime-modules-perl libcurses-ui-perl libxml-simple-perl 
 
 
