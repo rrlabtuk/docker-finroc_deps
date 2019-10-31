@@ -5,7 +5,7 @@ services:
   finroc:
     image: nkay08/finroc_deps
 #    build: .
-  container_name: finroc_deps
-  volumes:
-    - finroc_user:/home/finroc_user
-  restart: unless-stopped
+    container_name: finroc_deps
+    volumes:
+      - ./finroc_user:/home/finroc_user
+    restart: unless-stopped
