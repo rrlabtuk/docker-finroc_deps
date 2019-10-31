@@ -1,0 +1,2 @@
+deb     http://packages.finroc.org/ubuntu bionic main
+deb-src http://packages.finroc.org/ubuntu bionic main
