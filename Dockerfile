@@ -29,6 +29,6 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     finroc-dependencies astyle=2.03-1 && \
     apt-mark hold astyle
-    
+
 
 
