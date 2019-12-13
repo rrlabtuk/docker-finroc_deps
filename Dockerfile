@@ -27,10 +27,12 @@ RUN apt-get update && \
     ant astyle curl dialog doxygen llvm libclang-dev llvm-dev  gcc-8-base g++  clang-7  graphviz make mercurial default-jdk pkg-config 
     
 RUN apt-get install -y --no-install-recommends \
-    libfontchooser-java libitext5-java libsvgsalamander-java libxstream-java libxpp3-java
+    libfontchooser-java libitext5-java libsvgsalamander-java libxstream-java libxpp3-java \
+    openjdk-11-jdk libjung-free-java libcommons-collections4-java libganymed-ssh2-java \
+    libganymed-ssh2-java libjogl2-java
     
 RUN apt-get install -y --no-install-recommends \
-    libboost-all-dev libcppunit-dev  xml2
+    libboost-all-dev libcppunit-dev  xml2  libjpeg-turbo8-dev libreadline-dev
     
 RUN apt-get install -y --no-install-recommends \
     libswitch-perl libterm-readkey-perl libtime-modules-perl libcurses-ui-perl libxml-simple-perl 
