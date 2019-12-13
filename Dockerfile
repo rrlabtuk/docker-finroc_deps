@@ -38,7 +38,7 @@ RUN apt-get install -y --no-install-recommends \
     libswitch-perl libterm-readkey-perl libtime-modules-perl libcurses-ui-perl libxml-simple-perl 
 
 RUN apt-get install -y --no-install-recommends \
-    apriltag-dev caffe-cuda caffe-tools-cuda dvipng freeglut3-dev gsl-bin mathgeolib-dev minicom mrpt-apps sick-safetyscanners-base
+    caffe-cuda caffe-tools-cuda dvipng freeglut3-dev gsl-bin minicom mrpt-apps
     
 RUN apt-get install -y --no-install-recommends \
     lib-nite2-dev libacl1 libatlas-base-dev libattr1 libaudit-common libaudit1 libavcodec-extra libblkid1 libboost-dev \
