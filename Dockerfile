@@ -37,13 +37,6 @@ RUN apt-get install -y --no-install-recommends \
 RUN apt-get install -y --no-install-recommends \
     libswitch-perl libterm-readkey-perl libtime-modules-perl libcurses-ui-perl libxml-simple-perl 
 
-USER finroc_user
-
-
-RUN apt-get install -y --no-install-recommends \
-    coreutils base-files bsdutils findutils gpgv gpsd grep linux-generic-hwe-18.04 linux-headers-generic lld-7 llvm-7-dev mawk \
-    sonnet-plugins swi-prolog virtualenv xdot z3 zlib1g
- 
 RUN apt-get install -y --no-install-recommends \
     apriltag-dev caffe-cuda caffe-tools-cuda dvipng freeglut3-dev gsl-bin mathgeolib-dev minicom mrpt-apps sick-safetyscanners-base
     
@@ -57,3 +50,9 @@ RUN apt-get install -y --no-install-recommends \
     libomp-dev libomp5 libopencv-dev libp11-kit0 libpam-modules libpam-modules-bin libpam-runtime libpam0g libpcl-dev libpcre3 libpng16-16 \
     libprocps6 libprotobuf-dev libqt4-dev-bin libseccomp2 libselinux1 libsemanage-common libsemanage1 libsepol1 libsimage-dev libsmartcols1 libss2 \
     libstdc++6 libsystemd0 libtasn1-6 libtinfo5 libturbojpeg libudev1 libunistring2 libusb-1.0-0-dev libuuid1 libuvc-dev libuvc0
+    
+RUN apt-get install -y --no-install-recommends \
+    coreutils base-files bsdutils findutils gpgv gpsd grep linux-generic-hwe-18.04 linux-headers-generic lld-7 llvm-7-dev mawk \
+    sonnet-plugins swi-prolog virtualenv xdot z3 zlib1g
+    
+USER finroc_user
