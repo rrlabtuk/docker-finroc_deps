@@ -24,7 +24,7 @@ RUN add-apt-repository universe
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    ant astyle curl dialog doxygen llvm libclang-dev llvm-dev g++  clang  graphviz make mercurial default-jdk pkg-config 
+    ant astyle curl dialog doxygen llvm libclang-dev llvm-dev  gcc-8-base g++  clang-7  graphviz make mercurial default-jdk pkg-config 
     
 RUN apt-get install -y --no-install-recommends \
     libfontchooser-java libitext5-java libsvgsalamander-java libxstream-java libxpp3-java
@@ -36,5 +36,4 @@ RUN apt-get install -y --no-install-recommends \
     libswitch-perl libterm-readkey-perl libtime-modules-perl libcurses-ui-perl libxml-simple-perl 
 
 USER finroc_user
-
 
