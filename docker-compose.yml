@@ -8,3 +8,4 @@ services:
     container_name: finroc_deps
     volumes:
       - ./finroc_user:/home/finroc_user
+      - /etc/localtime:/etc/localtime:ro

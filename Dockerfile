@@ -64,4 +64,9 @@ RUN apt-get install -y --no-install-recommends \
     coreutils base-files bsdutils findutils gpgv gpsd grep linux-generic-hwe-18.04 linux-headers-generic lld-7 llvm-7-dev mawk \
     sonnet-plugins swi-prolog virtualenv xdot z3 zlib1g
     
+RUN apt-get install -y --no-install-recommends \
+    clang
+    
 USER finroc_user
+
+ENVIRONMENT CXXFLAGS='-Wno-misleading-indentation'
