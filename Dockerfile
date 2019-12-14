@@ -69,4 +69,4 @@ RUN apt-get install -y --no-install-recommends \
     
 USER finroc_user
 
-ENVIRONMENT CXXFLAGS='-Wno-misleading-indentation'
+ENV CXXFLAGS='-Wno-misleading-indentation'
