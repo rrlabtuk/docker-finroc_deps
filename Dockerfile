@@ -26,10 +26,6 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     ant curl dialog doxygen llvm libclang-dev llvm-dev g++ clang graphviz make mercurial default-jdk pkg-config \
     subversion 
-    
-COPY ./astyle_2.03-1_amd64.deb /var/cache/apt/archives/astyle_2.03-1_amd64.deb
-RUN dpkg -i /var/cache/apt/archives/astyle_2.03-1_amd64.deb && \
-    apt-mark hold astyle
 
 RUN apt-get install -y --no-install-recommends \
     libfontchooser-java libitext5-java libsvgsalamander-java libxstream-java libxpp3-java \
@@ -56,6 +52,14 @@ RUN apt-get install -y --no-install-recommends \
     
 RUN apt-get install -y --no-install-recommends \
     libomp-dev 
+    
+COPY ./astyle_2.03-1_amd64.deb /var/cache/apt/archives/astyle_2.03-1_amd64.deb
+RUN yes | dpkg -i /var/cache/apt/archives/astyle_2.03-1_amd64.deb && \
+    apt-mark hold astyle
+    
+COPY ./libui-dialog-perl_1.09-1_all.deb /var/cache/apt/archives/libui-dialog-perl_1.09-1_all.deb
+RUN yes | dpkg -i /var/cache/apt/archives/libui-dialog-perl_1.09-1_all.deb
+
 
 USER finroc_user
 
