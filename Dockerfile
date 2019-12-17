@@ -24,8 +24,10 @@ RUN add-apt-repository universe
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    ant astyle=2.03-1 curl dialog doxygen llvm libclang-dev llvm-dev g++ clang graphviz make mercurial default-jdk pkg-config \
-    subversion && \
+    ant curl dialog doxygen llvm libclang-dev llvm-dev g++ clang graphviz make mercurial default-jdk pkg-config \
+    subversion 
+RUN apt-get install -y --no-install-recommends \
+    astyle && \
     apt-mark hold astyle
 
 RUN apt-get install -y --no-install-recommends \
