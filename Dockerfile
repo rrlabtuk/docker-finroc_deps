@@ -35,7 +35,8 @@ RUN apt-get update && \
     g++-8 libgcc-8-dev  && \
     rm -rf /var/lib/apt/lists/*  
     
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
     libcgal-dev libcgal13 libcgal-qt5-dev libcgal-ipelets libcgal-qt5-13 libcgal-demo \
     libopencv-dev libomp-dev  && \
     rm -rf /var/lib/apt/lists/*  
