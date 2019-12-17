@@ -26,8 +26,9 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     ant curl dialog doxygen llvm libclang-dev llvm-dev g++ clang graphviz make mercurial default-jdk pkg-config \
     subversion 
-RUN apt-get install -y --no-install-recommends \
-    astyle && \
+    
+COPY ./astyle_2.03-1_amd64.deb /var/cache/apt/archives/astyle_2.03-1_amd64.deb
+RUN dpkg -i /var/cache/apt/archives/astyle_2.03-1_amd64.deb && \
     apt-mark hold astyle
 
 RUN apt-get install -y --no-install-recommends \
