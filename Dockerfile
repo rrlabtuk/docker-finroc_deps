@@ -40,7 +40,7 @@ RUN apt-get install -y --no-install-recommends \
     libboost-all-dev libcppunit-dev  libxml2-dev xml2  libjpeg-turbo8-dev libreadline-dev 
     
 RUN apt-get install -y --no-install-recommends \
-    libswitch-perl libterm-readkey-perl libtime-modules-perl libui-dialog-perl libcurses-ui-perl libxml-simple-perl 
+    libswitch-perl libterm-readkey-perl libtime-modules-perl libcurses-ui-perl libxml-simple-perl 
 
 RUN apt-get install -y --no-install-recommends \
     libespeak-dev libestools2.1-dev festival-dev
