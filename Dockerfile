@@ -26,7 +26,7 @@ VOLUME /home/finroc_user
 RUN add-apt-repository universe
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0\
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
     ant curl dialog doxygen llvm libclang-dev llvm-dev g++ clang graphviz make mercurial default-jdk pkg-config \
     subversion \
     libfontchooser-java libitext5-java libsvgsalamander-java libxstream-java libxpp3-java \
@@ -40,7 +40,7 @@ RUN apt-get update && \
     
 RUN add-apt-repository universe && \
     apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0\
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
     libcgal-dev libcgal13 libcgal-qt5-dev libcgal-ipelets libcgal-qt5-13 libcgal-demo \
     libopencv-dev libomp-dev  && \
     rm -rf /var/lib/apt/lists/*  
@@ -53,7 +53,10 @@ RUN yes | dpkg -i /var/cache/apt/archives/astyle_2.03-1_amd64.deb && \
 COPY ./libui-dialog-perl_1.09-1_all.deb /var/cache/apt/archives/libui-dialog-perl_1.09-1_all.deb
 RUN yes | dpkg -i /var/cache/apt/archives/libui-dialog-perl_1.09-1_all.deb && \
     rm -rf /var/lib/apt/lists/*  
-
+    
+UN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
+    qt5-default
 
 USER finroc_user
 
