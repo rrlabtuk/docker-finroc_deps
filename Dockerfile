@@ -28,7 +28,7 @@ RUN apt-get update && \
     subversion \
     libfontchooser-java libitext5-java libsvgsalamander-java libxstream-java libxpp3-java \
     openjdk-11-jdk libjung-free-java libcommons-collections4-java libganymed-ssh2-java \
-    libganymed-ssh2-java libjogl2-java 
+    libganymed-ssh2-java libjogl2-java \
     libboost-all-dev libcppunit-dev  libxml2-dev xml2  libjpeg-turbo8-dev libreadline-dev \
     libswitch-perl libterm-readkey-perl libtime-modules-perl libcurses-ui-perl libxml-simple-perl \
     libespeak-dev libestools2.1-dev festival-dev \
