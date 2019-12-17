@@ -23,7 +23,7 @@ VOLUME /home/finroc_user
 RUN add-apt-repository universe
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0\
     ant curl dialog doxygen llvm libclang-dev llvm-dev g++ clang graphviz make mercurial default-jdk pkg-config \
     subversion \
     libfontchooser-java libitext5-java libsvgsalamander-java libxstream-java libxpp3-java \
@@ -35,8 +35,9 @@ RUN apt-get update && \
     g++-8 libgcc-8-dev  && \
     rm -rf /var/lib/apt/lists/*  
     
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
+RUN add-apt-repository universe && \
+    apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0\
     libcgal-dev libcgal13 libcgal-qt5-dev libcgal-ipelets libcgal-qt5-13 libcgal-demo \
     libopencv-dev libomp-dev  && \
     rm -rf /var/lib/apt/lists/*  
