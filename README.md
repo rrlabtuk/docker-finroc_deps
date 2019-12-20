@@ -1,4 +1,5 @@
 # docker-finroc_deps
+An ubuntu image with basic dependencies to build and run a finroc environment.
 
 # Running
 ## Via Docker
