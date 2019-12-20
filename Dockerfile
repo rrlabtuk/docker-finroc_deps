@@ -61,3 +61,5 @@ RUN apt-get update && \
 USER finroc_user
 
 ENV CXXFLAGS='-Wno-misleading-indentation'
+
+ENTRYPOINT /bin/bash
