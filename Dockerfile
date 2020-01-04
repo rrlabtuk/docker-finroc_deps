@@ -60,15 +60,6 @@ RUN apt-get update && \
 
 USER finroc_user
 
-RUN echo "#! /bin/bash\n\
-if [ -d ~/finroc ]; then\n\
-  cd ~/finroc\n\
-  source scripts/setenv\n\
-  cd -\n\
-fi\n\
-" > ~/finroc-setenv && chmod +x ~/finroc-setenv
-
 ENV CXXFLAGS='-Wno-misleading-indentation'
 
-#ENTRYPOINT /bin/bash --init-file <(echo ". \"$HOME/.bashrc\"; . ~/finroc-setenv")
-ENTRYPOINT /bin/bash
+CMD /bin/bash
