@@ -5,5 +5,11 @@ if [ -d /home/finroc_user/finroc ]; then
   . scripts/setenv
   cd -
 fi
+
+if [ ! -f /home/finroc_user/.bashrc ]; then
+  if [ -f /.bashrc ]; then
+    cp /.bashrc /home/finroc_user
+  fi
+fi
 # Then run the CMD
 exec "$@"
