@@ -70,4 +70,4 @@ fi\n\
 
 ENV CXXFLAGS='-Wno-misleading-indentation'
 
-ENTRYPOINT /bin/bash && ~/finroc-setenv
+ENTRYPOINT /bin/bash --init-file <(echo ". \"$HOME/.bashrc\"; ~/finroc-setenv")
