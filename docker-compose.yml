@@ -7,5 +7,5 @@ services:
 #    build: .
     container_name: finroc_deps
     volumes:
-      - /home/finroc_user:/home/finroc_user
+      - ./finroc_user:/home/finroc_user
       - /etc/localtime:/etc/localtime:ro
