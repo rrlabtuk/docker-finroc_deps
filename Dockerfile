@@ -62,8 +62,8 @@ USER finroc_user
 
 ENV CXXFLAGS='-Wno-misleading-indentation'
 
-COPY ./entrypoint.sh /home/finroc_user/entrypoint.sh
+COPY ./entrypoint.sh /
 
-ENTRYPOINT ["/home/finroc_user/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 
 CMD /bin/bash
