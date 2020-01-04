@@ -7,8 +7,8 @@ if [ -d /home/finroc_user/finroc ]; then
 fi
 
 if [ ! -f /home/finroc_user/.bashrc ]; then
-  if [ -f /.bashrc ]; then
-    cp /.bashrc /home/finroc_user
+  if [ -f /finroc_user_scripts/.bashrc ]; then
+    cp /finroc_user_scripts/.bashrc /home/finroc_user
   fi
 fi
 # Then run the CMD
