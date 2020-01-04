@@ -58,13 +58,15 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
     qt5-default libqt4-dev-bin
 
+RUN mkdir -p /finroc_user_scripts && chown -R finroc_user:finroc_user /finroc_user_scripts && chmod -R 777 /finroc_user_scripts
+
 USER finroc_user
 
 ENV CXXFLAGS='-Wno-misleading-indentation'
 
-COPY ./entrypoint.sh /
-COPY ./.bashrc /
+COPY ./entrypoint.sh /finroc_user_scripts
+COPY ./.bashrc /finroc_user_scripts
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/finroc_user_scripts/entrypoint.sh"]
 
 CMD /bin/bash
