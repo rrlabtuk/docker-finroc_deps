@@ -12,7 +12,9 @@ An ubuntu image with basic dependencies to build and run a finroc environment.
 `docker-compose run finroc bash`
 
 ### Note: Adjust volumes if necessary!
-By default the folder `./finroc_user` (relative to the current console) is mounted as `/home/finroc_user` within the container
+By default (for `docker-compose`) the folder `./finroc_user` (relative to the current console) is mounted as `/home/finroc_user` within the container
+### Tip:
+When setting up a folder for use as volume, `chmod -R 777 <folder>` allows any user to write to this folder. This allows you to edit files from within the container and from your host computer.
 
 # Running a docker container WITHOUT any volumes will not save any data at all between runs. All user data is lost !
 
@@ -46,4 +48,4 @@ You can download your finroc installation from within the container or download 
     - Add your folder that is mounted at `/home/finroc_user` or `/home/finroc_user/finroc`
     ![eclipse-docker-finroc](img/eclipse-docker-finroc.png)
     ![eclipse-docker-finroc_user](img/eclipse-docker-finroc_user.png)
-    
+- Now you should be able to build within eclipse using this Docker image
