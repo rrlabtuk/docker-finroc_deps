@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 # Read in the file of environment settings
 if [ -d /home/finroc_user/finroc ]; then
   cd /home/finroc_user/finroc
