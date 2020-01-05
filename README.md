@@ -7,7 +7,7 @@ An ubuntu image with basic dependencies to build and run a finroc environment.
 
 # Running
 ## Via Docker
-`docker run -v finroc_user:/home/finroc_user -i -t nkay08/finroc_deps bash`
+`docker run -v ./finroc_user:/home/finroc_user -i -t nkay08/finroc_deps bash`
 ## Via Docker compose
 `docker-compose run finroc bash`
 
