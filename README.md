@@ -43,7 +43,8 @@ You can download your finroc installation from within the container or download 
 [https://github.com/nkay08/docker-finroc_deps-x11](https://github.com/nkay08/docker-finroc_deps-x11)
 
 # Using Eclipse to build inside the docker container
- - Go to `Project -> Properties`, then `C/C++ Build -> Settings` and in the `Container Settigns` tab check `Build inside Docker image`
+- `docker pull nkay08/finroc_deps:latest` to get the latest image
+- Go to `Project -> Properties`, then `C/C++ Build -> Settings` and in the `Container Settigns` tab check `Build inside Docker image`
     - Select the docker image `nkay08/finroc_deps:latest`
     - Add your folder that is mounted at `/home/finroc_user` or `/home/finroc_user/finroc`
     ![eclipse-docker-finroc](img/eclipse-docker-finroc.png)
