@@ -7,9 +7,10 @@ An ubuntu image with basic dependencies to build and run a finroc environment.
 
 # Running
 ## Via Docker
-`docker run -v ./finroc_user:/home/finroc_user -i -t nkay08/finroc_deps bash`
+- `docker run -v ./finroc_user:/home/finroc_user -v /etc/localtime:/etc/localtime:ro -i -t nkay08/finroc_deps bash`
+ - `-v /etc/localtime:/etc/localtime:ro` is optional, but you can get compile errors (unit tests) related to time zone
 ## Via Docker compose
-`docker-compose run finroc bash`
+- `docker-compose run finroc bash`
 
 ### Note: Adjust volumes if necessary!
 By default (for `docker-compose`) the folder `./finroc_user` (relative to the current console) is mounted as `/home/finroc_user` within the container
