@@ -56,11 +56,13 @@ RUN yes | dpkg -i /var/cache/apt/archives/libui-dialog-perl_1.09-1_all.deb && \
     
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
-    qt5-default libqt4-dev-bin
+    qt5-default libqt4-dev-bin \\
+    && rm -rf /var/lib/apt/lists/* 
     
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
-    freeglut3-dev
+	freeglut3-dev \
+    && rm -rf /var/lib/apt/lists/* 
     
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
@@ -75,7 +77,9 @@ RUN apt-get update && \
     libpcre3 libpng16-16 libprocps6 libprotobuf-dev libqt4-dev-bin \
     libseccomp2 libselinux1 libsemanage-common libsemanage1 libsepol1 \
     libsimage-dev libsmartcols1 libss2 libstdc++6 libsystemd0 libtasn1-6 libtinfo5 libturbojpeg libudev1 libunistring2 \
-    libusb-1.0-0-dev libuuid1 libuvc-dev libuvc0
+    libusb-1.0-0-dev libuuid1 libuvc-dev libuvc0 \
+	&& rm -rf /var/lib/apt/lists/* 
+
 
 RUN mkdir -p /finroc_user_scripts && chown -R finroc_user:finroc_user /finroc_user_scripts && chmod -R 777 /finroc_user_scripts
 
