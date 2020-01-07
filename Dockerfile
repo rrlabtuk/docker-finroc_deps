@@ -56,11 +56,13 @@ RUN yes | dpkg -i /var/cache/apt/archives/libui-dialog-perl_1.09-1_all.deb && \
     
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
-    qt5-default libqt4-dev-bin
+    qt5-default libqt4-dev-bin \\
+    && rm -rf /var/lib/apt/lists/* 
     
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
-    freeglut3-dev
+    freeglut3-dev \
+    && rm -rf /var/lib/apt/lists/* 
 
 RUN mkdir -p /finroc_user_scripts && chown -R finroc_user:finroc_user /finroc_user_scripts && chmod -R 777 /finroc_user_scripts
 
