@@ -6,6 +6,8 @@ An ubuntu image with basic dependencies to build and run a finroc environment.
 - optional `docker-compose`
 
 # Running
+## Getting the container image
+`docker pull nkay08/finroc_deps:latest` or `docker pull nkay08/finroc_deps:v1`
 ## Via Docker
 - `docker run -v ./finroc_user:/home/finroc_user -v /etc/localtime:/etc/localtime:ro -i -t nkay08/finroc_deps bash`
  - `-v /etc/localtime:/etc/localtime:ro` is optional, but you can get compile errors (unit tests) related to time zone
