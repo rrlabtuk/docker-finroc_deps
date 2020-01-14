@@ -84,7 +84,7 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
     ann-tools libarchive-dev libaria-dev asn1c libassimp-dev  libcg3-dev \
     curl libdb++-dev  gpsd python-nmea2 libjsoncpp-dev liboctomap1.8 libvtk6-dev libqt5opengl5-dev \
-    libmatio-dev
+    libmatio-dev \
     && rm -rf /var/lib/apt/lists/* 
 
 # Not available on bionic:    
