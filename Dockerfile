@@ -80,6 +80,15 @@ RUN apt-get update && \
     libusb-1.0-0-dev libuuid1 libuvc-dev libuvc0 \
 	&& rm -rf /var/lib/apt/lists/* 
 
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
+    ann-tools libarchive-dev libaria-dev asn1c libassimp-dev  libcg3-dev \
+    curl libdb++-dev  gpsd python-nmea2 libjsoncpp-dev liboctomap1.8 libvtk6-dev libqt5opengl5-dev \
+    libmatio-dev
+    && rm -rf /var/lib/apt/lists/* 
+
+# Not available on bionic:    
+#    liborocos-bfl-dev carla
 
 RUN mkdir -p /finroc_user_scripts && chown -R finroc_user:finroc_user /finroc_user_scripts && chmod -R 777 /finroc_user_scripts
 
