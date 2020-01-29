@@ -27,6 +27,7 @@ RUN add-apt-repository universe
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
+    less \
     ant curl dialog doxygen llvm libclang-dev llvm-dev g++ clang graphviz make mercurial default-jdk pkg-config \
     subversion \
     libfontchooser-java libitext5-java libsvgsalamander-java libxstream-java libxpp3-java \
