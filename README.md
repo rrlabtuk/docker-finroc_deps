@@ -7,9 +7,9 @@ An ubuntu image with basic dependencies to build and run a finroc environment.
 
 # Running
 ## Getting the container image
-`docker pull nkay08/finroc_deps:latest` or `docker pull nkay08/finroc_deps:v1` or `docker pull nkay08/finroc_deps:extra_libs`
+`docker pull finrocunoffical/finroc_deps:latest` or `docker pull finrocunoffical/finroc_deps:v1` or `docker pull finrocunoffical/finroc_deps:extra_libs`
 ## Via Docker
-- `docker run -v ./finroc_user:/home/finroc_user -v /etc/localtime:/etc/localtime:ro -i -t nkay08/finroc_deps bash`
+- `docker run -v ./finroc_user:/home/finroc_user -v /etc/localtime:/etc/localtime:ro -i -t finrocunoffical/finroc_deps bash`
   - `-v /etc/localtime:/etc/localtime:ro` is optional, but you can get compile errors (unit tests) related to time zone
 ## Via Docker compose
 - `docker-compose run finroc bash`
@@ -24,7 +24,7 @@ When setting up a folder for use as volume, `chmod -R 777 <folder>` allows any u
 # Extending image with further packages
 Write a new Dockerfile
 ```
-FROM nkay08/finroc_deps:latest
+FROM finrocunoffical/finroc_deps:latest
 
 USER root
 
@@ -43,12 +43,12 @@ Some finroc libraries or projects may need additional dependencies. You should b
 You can download your finroc installation from within the container or download it externally to the folder mounted at `/home/finroc_user`. You can treat the environment within the container as a normal linux home. Thus you can create authorization files for mercurial (`.hgrc)` or git if necessary within `/home/finroc_user`.
 
 # X11 Session for graphical interfaces or simulation
-[https://github.com/nkay08/docker-finroc_deps-x11](https://github.com/nkay08/docker-finroc_deps-x11)
+[https://github.com/finrocunoffical/docker-finroc_deps-x11](https://github.com/finrocunoffical/docker-finroc_deps-x11)
 
 # Using Eclipse to build inside the docker container
-- `docker pull nkay08/finroc_deps:latest` to get the latest image
+- `docker pull finrocunoffical/finroc_deps:latest` to get the latest image
 - Go to `Project -> Properties`, then `C/C++ Build -> Settings` and in the `Container Settigns` tab check `Build inside Docker image`
-    - Select the docker image `nkay08/finroc_deps:latest`
+    - Select the docker image `finrocunoffical/finroc_deps:latest`
     - Add your folder that is mounted at `/home/finroc_user` or `/home/finroc_user/finroc`
     ![eclipse-docker-finroc](img/eclipse-docker-finroc.png)
     ![eclipse-docker-finroc_user](img/eclipse-docker-finroc_user.png)
