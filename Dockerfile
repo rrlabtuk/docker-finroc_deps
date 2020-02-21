@@ -24,12 +24,14 @@ VOLUME /home/finroc_user
 
 ENV CXXFLAGS='-Wno-misleading-indentation'
 
+RUN mkdir -p /finroc_user_scripts
+
 COPY ./entrypoint.sh /finroc_user_scripts
 COPY ./.bashrc /finroc_user_scripts
 
-ENTRYPOINT ["/finroc_user_scripts/entrypoint.sh"]
+RUN chown -R finroc_user:finroc_user /finroc_user_scripts && chmod -R 777 /finroc_user_scripts
 
-RUN mkdir -p /finroc_user_scripts && chown -R finroc_user:finroc_user /finroc_user_scripts && chmod -R 777 /finroc_user_scripts
+ENTRYPOINT ["/finroc_user_scripts/entrypoint.sh"]
 
 CMD /bin/bash
 
