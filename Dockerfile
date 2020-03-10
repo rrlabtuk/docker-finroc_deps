@@ -68,6 +68,11 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
     libxml2-utils libcurl4-openssl-dev libeigen3-dev libpcl-dev libflann-dev \
     && rm -rf /var/lib/apt/lists/* 
+    
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
+    gdbserver \
+    && rm -rf /var/lib/apt/lists/* 
 
 RUN mkdir -p /finroc_user_scripts && chown -R finroc_user:finroc_user /finroc_user_scripts && chmod -R 777 /finroc_user_scripts
 
