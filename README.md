@@ -53,3 +53,18 @@ You can download your finroc installation from within the container or download 
     ![eclipse-docker-finroc](img/eclipse-docker-finroc.png)
     ![eclipse-docker-finroc_user](img/eclipse-docker-finroc_user.png)
 - Now you should be able to build within eclipse using this Docker image
+
+# Using eclipse to run program inside container
+- Install `C/C++ Docker Container Launch Support` under `Help -> Install New Software`
+- Add new "run configuration" as `C/C++ Container Launcher`
+- Go to tab "Container" and select Image `finrocunofficial/finroc_deps`
+- In tab "Main" select the "C/C++ Application" to launch (recommended to use "Search Project" function)
+
+
+# Using eclipse to debug inside container
+- Install `C/C++ Docker Container Launch Support` under `Help -> Install New Software`
+- Add new "Debug configuration" as `C/C++ Container Launcher`
+- Go to tab "Container" and select Image `finrocunofficial/finroc_deps`
+- In tab "Main" select the "C/C++ Application" to launch (recommended to use "Search Project" function)
+![eclipse-docker-finroc](img/eclipse-debug1.png)
+![eclipse-docker-finroc](img/eclipse-debug2.png)
