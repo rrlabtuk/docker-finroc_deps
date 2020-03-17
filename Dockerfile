@@ -22,53 +22,32 @@ COPY ./.bashrc /home/finroc_user
 
 VOLUME /home/finroc_user
 
-RUN add-apt-repository universe
+#RUN add-apt-repository universe
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
-    less \
-    ant curl dialog doxygen llvm libclang-dev llvm-dev g++ clang graphviz make mercurial default-jdk pkg-config \
-    subversion \
-    libfontchooser-java libitext5-java libsvgsalamander-java libxstream-java libxpp3-java \
-    openjdk-11-jdk libjung-free-java libcommons-collections4-java libganymed-ssh2-java \
-    libganymed-ssh2-java libjogl2-java \
-    libboost-all-dev libcppunit-dev  libxml2-dev xml2  libjpeg-turbo8-dev libreadline-dev \
-    libswitch-perl libterm-readkey-perl libtime-modules-perl libcurses-ui-perl libxml-simple-perl \
-    libespeak-dev libestools2.1-dev festival-dev \
-    g++-8 libgcc-8-dev  && \
-    rm -rf /var/lib/apt/lists/*  
-    
-RUN add-apt-repository universe && \
-    apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
-    libcgal-dev libcgal13 libcgal-qt5-dev libcgal-ipelets libcgal-qt5-13 libcgal-demo \
-    libopencv-dev libomp-dev  && \
-    rm -rf /var/lib/apt/lists/*  
-        
-COPY ./astyle_2.03-1_amd64.deb /var/cache/apt/archives/astyle_2.03-1_amd64.deb
-RUN yes | dpkg -i /var/cache/apt/archives/astyle_2.03-1_amd64.deb && \
-    apt-mark hold astyle && \
-    rm -rf /var/lib/apt/lists/*  
-    
-COPY ./libui-dialog-perl_1.09-1_all.deb /var/cache/apt/archives/libui-dialog-perl_1.09-1_all.deb
-RUN yes | dpkg -i /var/cache/apt/archives/libui-dialog-perl_1.09-1_all.deb && \
-    rm -rf /var/lib/apt/lists/*  
-    
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
-    qt5-default libqt4-dev-bin \
-    && rm -rf /var/lib/apt/lists/* 
-    
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
-    freeglut3-dev \
-    && rm -rf /var/lib/apt/lists/* 
+    dirmngr gpg-agent \
+    && rm -rf /var/lib/apt/lists/*
+
+ARG AGROSY_PUB_KEY
+
+ENV AGROSY_PUB_KEY $AGROSY_PUB_KEY
+
+RUN if [ -z "$AGROSY_PUB_KEY" ] ; then echo 'Environment variable AGROSY_PUB_KEY must be specified. Exiting.'; exit 1;  fi
+
+RUN echo "deb https://agrosy.informatik.uni-kl.de/ubuntu `lsb_release -cs` main" | tee /etc/apt/sources.list.d/agrosy.list
+
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $AGROSY_PUB_KEY
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
-    libxml2-utils libcurl4-openssl-dev libeigen3-dev libpcl-dev libflann-dev \
-    && rm -rf /var/lib/apt/lists/* 
-    
+    finroc-dependencies astyle=2.03-1 \
+    && apt-mark hold astyle \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set environment variable empty so it does not leak into the container
+ENV AGROSY_PUB_KEY ""
+
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
     gdbserver gdb \
