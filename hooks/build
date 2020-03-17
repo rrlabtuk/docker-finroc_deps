@@ -1,3 +1,12 @@
 #!/bin/bash
 
-docker build . -t $IMAGE_NAME --build-arg AGROSY_PUB_KEY=$AGROSY_PUB_KEY
+if [ -z "$AGROSY_PUB_KEY" ] ; then
+ echo 'Environment variable AGROSY_PUB_KEY must be specified. Exiting.'
+ exit 1
+fi
+
+echo $AGROSY_PUB_KEY > agrosy_pub_key.txt
+
+DOCKER_BUILDKIT=1 docker build . --secret id=agrosy_pub_key,src=./agrosy_pub_key.txt
+
+rm agrosy_pub_key.txt

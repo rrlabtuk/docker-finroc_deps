@@ -1,3 +1,5 @@
+# syntax = docker/dockerfile:1.0-experimental
+
 FROM ubuntu:bionic
 
 RUN apt-get update && \
@@ -29,31 +31,18 @@ RUN apt-get update && \
     dirmngr gpg-agent \
     && rm -rf /var/lib/apt/lists/*
 
-# Make sure AGROSY_PUB_KEY is passed as build-arg e.g. `docker build . --build-arg AGROSY_PUB_KEY=<AGROSY_PUB_KEY>`
-# On docker hub this variable can be added under "Configure Automated Builds"/"Build Environment Variables"
-ARG AGROSY_PUB_KEY
-
-ENV AGROSY_PUB_KEY $AGROSY_PUB_KEY
-
-RUN if [ -z "$AGROSY_PUB_KEY" ] ; then echo 'Environment variable AGROSY_PUB_KEY must be specified. Exiting.'; exit 1;  fi
-
-RUN echo "deb https://agrosy.informatik.uni-kl.de/ubuntu `lsb_release -cs` main" | tee /etc/apt/sources.list.d/agrosy.list
-
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $AGROSY_PUB_KEY
-
-RUN apt-get update && \
+RUN --mount=type=secret,id=agrosy_pub_key,dst=/tmp/agrosy_pub_key.txt apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $(cat /tmp/agrosy_pub_key.txt) \
+    && echo "deb https://agrosy.informatik.uni-kl.de/ubuntu `lsb_release -cs` main" | tee /etc/apt/sources.list.d/agrosy.list \
+    && apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
     finroc-dependencies astyle=2.03-1 \
     && apt-mark hold astyle \
     && rm -rf /var/lib/apt/lists/*
 
-# Set environment variable empty so it does not leak into the container
-ENV AGROSY_PUB_KEY ""
-
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
     gdbserver gdb \
-    && rm -rf /var/lib/apt/lists/* 
+    && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /finroc_user_scripts && chown -R finroc_user:finroc_user /finroc_user_scripts && chmod -R 777 /finroc_user_scripts
 
