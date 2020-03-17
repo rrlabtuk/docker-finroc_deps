@@ -7,6 +7,6 @@ fi
 
 echo $AGROSY_PUB_KEY > agrosy_pub_key.txt
 
-DOCKER_BUILDKIT=1 docker build . --secret id=agrosy_pub_key,src=./agrosy_pub_key.txt
+DOCKER_BUILDKIT=1 docker build . --secret id=agrosy_pub_key,src=./agrosy_pub_key.txt -t ${IMAGE_NAME:-finrocunofficial/finroc_deps:agrosy}
 
 rm agrosy_pub_key.txt
