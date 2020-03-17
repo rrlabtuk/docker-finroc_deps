@@ -29,6 +29,8 @@ RUN apt-get update && \
     dirmngr gpg-agent \
     && rm -rf /var/lib/apt/lists/*
 
+# Make sure AGROSY_PUB_KEY is passed as build-arg e.g. `docker build . --build-arg AGROSY_PUB_KEY=<AGROSY_PUB_KEY>`
+# On docker hub this variable can be added under "Configure Automated Builds"/"Build Environment Variables"
 ARG AGROSY_PUB_KEY
 
 ENV AGROSY_PUB_KEY $AGROSY_PUB_KEY
