@@ -85,6 +85,14 @@ RUN sed  -i '1i deb [trusted=yes] file:/install_deb/archives ./' /etc/apt/source
     && rm -rf /install_deb \
     && sed '1d' /etc/apt/sources.list > tmpfile; mv tmpfile /etc/apt/sources.list
 
+RUN add-apt-repository universe && \
+    apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
+    libcgal-dev libcgal13 libcgal-qt5-dev libcgal-ipelets libcgal-qt5-13 libcgal-demo \
+    libopencv-dev libomp-dev  \
+    libxml2-utils libcurl4-openssl-dev libeigen3-dev libpcl-dev libflann-dev freeglut3-dev qt5-default libqt4-dev-bin \
+    && rm -rf /var/lib/apt/lists/*
+
 # Install gdbserver and gdb for remote debugging from outside container
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
