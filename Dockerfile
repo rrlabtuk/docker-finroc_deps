@@ -1,4 +1,4 @@
-FROM finrocunofficial/finroc_deps:latest
+FROM finrocunofficial/finroc_deps:manual_deps
 
 USER root
 
