@@ -101,7 +101,7 @@ RUN apt-get update && \
     
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
-    nano vi less \
+    nano vim less \
     && rm -rf /var/lib/apt/lists/* 
 
 # Create finrco_user_scripts directory that contains the entrypoint
