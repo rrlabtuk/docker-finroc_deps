@@ -70,3 +70,10 @@ You can download your finroc installation from within the container or download 
 - In tab "Main" select the "C/C++ Application" to launch (recommended to use "Search Project" function)
 ![eclipse-docker-finroc](img/eclipse-debug1.png)
 ![eclipse-docker-finroc](img/eclipse-debug2.png)
+
+# Connecting from one container to another
+You might want to connect from one container to another, when e.g. debugging an application that connects to a program running in another container. Using the docker default network bridge it is possible to connect to locally running containers.
+Currently this process is rather cumbersome.
+- `docker ps` to get a list of all docker containers. Find the container ID you want to connect to 
+- `docker inspect <ID>  | grep '"IPAddress"' | head -n 1` to get the IP address of that container
+- You can connect to that container from other containers at this IP 
