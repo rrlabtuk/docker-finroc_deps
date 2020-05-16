@@ -103,6 +103,11 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
     nano vim less \
     && rm -rf /var/lib/apt/lists/* 
+    
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
+    doxygen \
+    && rm -rf /var/lib/apt/lists/* 
 
 # Create finrco_user_scripts directory that contains the entrypoint
 RUN mkdir -p /finroc_user_scripts && chown -R finroc_user:finroc_user /finroc_user_scripts && chmod -R 777 /finroc_user_scripts
