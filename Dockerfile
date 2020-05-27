@@ -116,7 +116,7 @@ RUN mkdir -p /finroc_user_scripts && chown -R finroc_user:finroc_user /finroc_us
 USER finroc_user
 
 # Set CXXFLAG that prevents compilation error. Setting the environment variable may not have an effect here
-ENV CXXFLAGS='-Wno-misleading-indentation'
+ENV CXXFLAGS='-Wno-error=misleading-indentation'
 
 # Copy entrypoint and default .bashrc
 COPY ./entrypoint.sh /finroc_user_scripts
