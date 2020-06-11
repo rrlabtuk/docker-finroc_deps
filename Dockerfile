@@ -8,5 +8,7 @@ RUN apt-get update && \
 
 #RUN  systemctl enable ssh 
 
+EXPOSE 22 80
+
 
 USER finroc_user
