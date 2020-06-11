@@ -14,9 +14,11 @@ RUN apt-get update && \
 RUN mkdir /var/run/sshd
 ADD sshd.conf /etc/supervisor/conf.d/sshd.conf
 
-RUN chown finroc_user:finroc_user /etc/supervisor/conf.d/sshd.conf
+ADD start.sh /finroc_user_scripts/start.sh
+RUN chmod 0755 /start.sh
 
 EXPOSE 22
 
+CMD /start.sh
 
-USER finroc_user
+
