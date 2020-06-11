@@ -2,13 +2,13 @@ FROM finrocunofficial/finroc_deps:latest
 USER root
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
-    ssh \
+    ssh supervisor \
   && rm -rf /var/lib/apt/lists/* \
   && yes password | passwd finroc_user
   
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  -o=Dpkg::Use-Pty=0 \
-    supervisor \
+    cmake \
     && rm -rf /var/lib/apt/lists/*
     
 RUN mkdir /var/run/sshd
