@@ -14,6 +14,8 @@ RUN apt-get update && \
 RUN mkdir /var/run/sshd
 ADD sshd.conf /etc/supervisor/conf.d/sshd.conf
 
+RUN chown finroc_user:finroc_user /etc/supervisor/conf.d/sshd.conf
+
 EXPOSE 22
 
 
