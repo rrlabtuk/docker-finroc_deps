@@ -15,7 +15,7 @@ RUN mkdir /var/run/sshd
 ADD sshd.conf /etc/supervisor/conf.d/sshd.conf
 
 ADD start_ssh.sh /finroc_user_scripts/start_ssh.sh
-RUN chmod 0755 /start.sh
+RUN chmod 0755 /start_ssh.sh
 
 EXPOSE 22
 
